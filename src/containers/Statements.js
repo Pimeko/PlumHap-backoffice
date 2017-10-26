@@ -5,7 +5,7 @@ import * as statements from '../actions/statements'
 // Components
 import Header from '../components/Header'
 import Menu from '../components/Menu'
-//import StatementsList from '../components/StatementsList'
+import StatementsList from '../components/StatementsList'
 import Footer from '../components/Footer'
 
 class Statements extends Component {
@@ -19,6 +19,12 @@ class Statements extends Component {
         <Header/>
 
         <Menu active="statements"/>
+
+        <div className="hero-body column is-4 is-offset-4 has-text-centered">
+          <div className="box">
+            <StatementsList list={this.props.list}/>
+          </div>
+        </div>
 
         <Footer/>
       </div>

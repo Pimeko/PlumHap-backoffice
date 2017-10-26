@@ -5,7 +5,7 @@ export default class Footer extends Component {
     return (
       <footer>
         <p className="has-text-centered">
-          PlumHap, tous droits réservés. 2017
+          PlumHap, all rights reserved. 2017
         </p>
       </footer>
     );

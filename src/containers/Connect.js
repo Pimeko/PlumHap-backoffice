@@ -24,14 +24,12 @@ class Connect extends Component {
     return (
       <div>
         <Header/>
-        <div className="hero-body">
-          <div className="column is-4 is-offset-4 has-text-centered">
-            <div className="box">
-              <h2 className="title has-text-grey">Connexion</h2>
-              <p className="subtitle has-text-grey">Veuillez vous connecter pour continuer.</p>
-              <Login login={(pseudo, password) => this.login(pseudo, password)}/>
-              { this.props.error }
-            </div>
+        <div className="hero-body column is-4 is-offset-4 has-text-centered">
+          <div className="box">
+            <h2 className="title has-text-grey">Connexion</h2>
+            <p className="subtitle has-text-grey">Veuillez vous connecter pour continuer.</p>
+            <Login login={(pseudo, password) => this.login(pseudo, password)}/>
+            { this.props.error }
           </div>
         </div>
         <Footer/>

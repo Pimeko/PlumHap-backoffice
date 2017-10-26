@@ -15,3 +15,7 @@ html {
   background-color: #F2F6FA;
   font-family: mobiloFont-light;
 }
+
+table {
+  margin: 0 auto;
+}

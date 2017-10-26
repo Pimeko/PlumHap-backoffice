@@ -4,13 +4,25 @@ export default class StatementsList extends Component {
 
   render() {
     return (
-      <div className="hero-body">
-        <div className="column is-4 is-offset-4 has-text-centered">
-          <div className="box">
-            Statements
-          </div>
-        </div>
-      </div>
+      <table className="table has-text-centered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            this.props.list.map((statement) => {
+              return <tr>
+                  <th>{ statement.data }</th>
+                  <td><button className="button">Editer</button></td>
+                </tr>
+            })
+          }
+
+        </tbody>
+      </table>
     );
   }
 }

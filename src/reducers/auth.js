@@ -1,5 +1,3 @@
-import * as types from '../types';
-
 export default function auth (
   state = {
     user_id: '',
@@ -11,13 +9,13 @@ export default function auth (
   action
 ) {
   switch (action.type) {
-    case types.LOGIN_STARTED:
+    case "LOGIN_STARTED":
       return {
         ...state,
         isLoggingIn: true,
         error: ''
       };
-    case types.LOGGED_SUCCESS:
+    case "LOGGED_SUCCESS":
       return {
         ...state,
         user_id: action.data.id,
@@ -26,7 +24,7 @@ export default function auth (
         isLogged: true,
         error: ''
       };
-    case types.LOGGED_FAILED:
+    case "LOGGED_FAILED":
       return {
         ...state,
         error: action.error.message,

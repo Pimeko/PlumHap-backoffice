@@ -1,1 +1,1 @@
-Front office for the **PlumHap** app.
+Back office for the **PlumHap** app.

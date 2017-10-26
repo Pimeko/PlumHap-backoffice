@@ -49,7 +49,7 @@ export default class Login extends Component {
           <div className="control">
             <input className="input" type="password" placeholder="Password"
             value={this.state.passwordValue} onChange={this.updatePasswordValue}
-            onKeyPress={(event) => this.handleEnterInput(event, this)} autoFocus/>
+            onKeyPress={(event) => this.handleEnterInput(event, this)}/>
           </div>
         </div>
 

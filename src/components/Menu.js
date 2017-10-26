@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router'
 
 export default class Menu extends Component {
+  changeTab(name) {
+    browserHistory.push('/' + name);
+  }
 
   render() {
     return (
-      <nav className="navbar" role="navigation" aria-label="dropdown navigation">
-        <div className="navbar-item has-dropdown">
-          <a className="navbar-link">
-            Docs
-          </a>
-
-          <div className="navbar-dropdown">
-            <a className="navbar-item">
-              Overview
-            </a>
-            <a className="navbar-item">
-              Elements
-            </a>
-            <a className="navbar-item">
-              Components
-            </a>
-            <hr className="navbar-divider"/>
-            <div className="navbar-item">
-              Version 0.6.0
-            </div>
-          </div>
-        </div>
-      </nav>
+      <div className="tabs is-centered">
+        <ul>
+          <li className={ this.props.active === "statements" ? "is-active" : "" }>
+            <a onClick={ () => this.changeTab("statements") }>Statements</a>
+          </li>
+          <li className={ this.props.active === "activities" ? "is-active" : "" }>
+            <a onClick={ () => this.changeTab("activities") }>Activities</a>
+          </li>
+          <li className={ this.props.active === "admin" ? "is-active" : "" }>
+            <a onClick={ () => this.changeTab("admin") }>Admin panel</a>
+          </li>
+        </ul>
+      </div>
     );
   }
 }

@@ -16,7 +16,7 @@ class Connect extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.isLogged) {
-      browserHistory.push('/home');
+      browserHistory.push('/statements');
     }
   }
 

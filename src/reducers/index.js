@@ -3,10 +3,12 @@ import { combineReducers } from 'redux'
 
 // Reducers
 import auth from './auth';
+import statements from './statements';
 
 const rootReducer = combineReducers({
   routing,
-  auth
+  auth,
+  statements
 })
 
 export default rootReducer

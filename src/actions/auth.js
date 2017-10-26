@@ -1,11 +1,18 @@
 import * as action_generator from './action_generator';
 
-// Login
 export const login = (user) =>  {
-  action_generator.generate("login"); // a mettre ailleurs ?
+  action_generator.generate("login");
   var body = {
     pseudo: user.pseudo,
     password: user.password,
   };
-  return action_generator.call_request('login', 'login', 'POST',  body);
+  var success_function = (data) => {
+    localStorage.setItem('jwt', data.token);
+  }
+  return action_generator.call_request(
+    'login',
+    'login',
+    'POST',
+    body,
+    success_function);
 }

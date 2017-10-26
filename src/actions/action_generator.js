@@ -24,7 +24,7 @@ export const action_failed = (name, error) => ({
 });
 
 // Must be returned
-export const call_request = (name, url, method, body) => {
+export const call_request = (name, url, method, body, success_function) => {
   return function(dispatch) {
     dispatch(action_started(name));
 
@@ -33,12 +33,39 @@ export const call_request = (name, url, method, body) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('jwt')
       },
       body: JSON.stringify(body)
     })
     .then(response=>response.json())
     .then(data => {
       if (data.success) {
+        success_function(data);
+        dispatch(action_success(name, data));
+      } else {
+        dispatch(action_failed(name, data));
+      }
+    })
+  }
+};
+
+// Must be returned
+export const call_get_request = (name, url, success_function) => {
+  return function(dispatch) {
+    dispatch(action_started(name));
+
+    fetch(url_API + url, {
+      method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+      }
+    })
+    .then(response=>response.json())
+    .then(data => {
+      if (data.success) {
+        success_function(data);
         dispatch(action_success(name, data));
       } else {
         dispatch(action_failed(name, data));

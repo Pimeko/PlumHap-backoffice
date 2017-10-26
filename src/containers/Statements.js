@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as statements from '../actions/statements'
+import * as auth_utils from '../utils/auth'
 
 // Components
 import Header from '../components/Header'
@@ -10,6 +11,7 @@ import Footer from '../components/Footer'
 
 class Statements extends Component {
   componentWillMount() {
+    auth_utils.check_auth(this.props.route.connected);
     this.props.dispatch(statements.get_statements());
   }
 

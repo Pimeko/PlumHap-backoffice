@@ -16,7 +16,7 @@ export default class StatementsList extends Component {
             this.props.list.map((statement) => {
               return <tr>
                   <th>{ statement.data }</th>
-                  <td><button className="button">Editer</button></td>
+                  <td><button className="button">Edit</button></td>
                 </tr>
             })
           }

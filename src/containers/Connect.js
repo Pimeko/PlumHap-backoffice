@@ -9,6 +9,12 @@ import Login from '../components/Login'
 import Footer from '../components/Footer'
 
 class Connect extends Component {
+  componentWillMount() {
+    if (localStorage.getItem('jwt') !== null) {
+      browserHistory.push('/statements');
+    }
+  }
+
   login(pseudo, password) {
     var user = { pseudo: pseudo, password: password };
     this.props.dispatch(login(user));

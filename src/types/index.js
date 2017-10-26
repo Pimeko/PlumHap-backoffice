@@ -1,0 +1,4 @@
+// app
+export const LOGIN_STARTED = 'LOGIN_STARTED';
+export const LOGGED_FAILED = 'LOGGED_FAILED';
+export const LOGGED_SUCCESS = 'LOGGED_SUCCESS';

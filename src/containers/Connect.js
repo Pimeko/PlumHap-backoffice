@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router'
 
 // Components
 import Header from '../components/Header'
-import Menu from '../components/Menu'
+import Login from '../components/Login'
 import Footer from '../components/Footer'
 
 class Connect extends Component {
@@ -24,11 +24,13 @@ class Connect extends Component {
     return (
       <div>
         <Header/>
-        <Menu/>
         <div className="hero-body">
           <div className="column is-4 is-offset-4 has-text-centered">
             <div className="box">
-              Connecté !
+              <h2 className="title has-text-grey">Connexion</h2>
+              <p className="subtitle has-text-grey">Veuillez vous connecter pour continuer.</p>
+              <Login login={(pseudo, password) => this.login(pseudo, password)}/>
+              { this.props.error }
             </div>
           </div>
         </div>
@@ -40,9 +42,7 @@ class Connect extends Component {
 
 function mapStateToProps(state) {
   const { auth } = state;
-  if (!auth.isLogged) {
-    browserHistory.push('/');
-  }
+
   return {
     isLogged: auth.isLogged,
     error: auth.error

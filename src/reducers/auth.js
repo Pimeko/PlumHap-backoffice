@@ -15,7 +15,7 @@ export default function auth (
         isLoggingIn: true,
         error: ''
       };
-    case "LOGGED_SUCCESS":
+    case "LOGIN_SUCCESS":
       return {
         ...state,
         user_id: action.data.id,
@@ -24,7 +24,7 @@ export default function auth (
         isLogged: true,
         error: ''
       };
-    case "LOGGED_FAILED":
+    case "LOGIN_FAILED":
       return {
         ...state,
         error: action.error.message,

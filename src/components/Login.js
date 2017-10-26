@@ -37,11 +37,25 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <input type="text" value={this.state.loginValue} onChange={this.updateLoginValue}
-          onKeyPress={(event) => this.handleEnterInput(event, this)} placeholder="Pseudo" autoFocus/> <br/>
-        <input type="text" value={this.state.passwordValue} onChange={this.updatePasswordValue}
-          onKeyPress={(event) => this.handleEnterInput(event, this)} placeholder="Password" autoFocus/> <br/>
-        <button onClick={() => this.login()}>Se connecter</button>
+        <div className="field">
+          <div className="control">
+            <input className="input" type="text" placeholder="Pseudo"
+            value={this.state.loginValue} onChange={this.updateLoginValue}
+            onKeyPress={(event) => this.handleEnterInput(event, this)} autoFocus/>
+          </div>
+        </div>
+
+        <div className="field">
+          <div className="control">
+            <input className="input" type="password" placeholder="Password"
+            value={this.state.passwordValue} onChange={this.updatePasswordValue}
+            onKeyPress={(event) => this.handleEnterInput(event, this)} autoFocus/>
+          </div>
+        </div>
+
+        <button className="button is-info is-large has-addons is-centered" onClick={() => this.login()}>
+          Se connecter
+        </button>
       </div>
     );
   }

@@ -5,9 +5,9 @@ export default class Header extends Component {
     return (
       <div>
         <header>
-          <center>
-            Plumhap Back Office
-          </center>
+          <p className="title is-2 has-text-centered">
+            PlumHap — Back Office
+          </p>
         </header>
       </div>
     );

@@ -4,7 +4,9 @@ export default class Footer extends Component {
   render() {
     return (
       <footer>
-        Blind Toast — Tous droits réservés<br/>EPITA 2017
+        <p className="has-text-centered">
+          PlumHap, tous droits réservés. 2017
+        </p>
       </footer>
     );
   }

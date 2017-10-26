@@ -10,6 +10,7 @@
     "redux-logger": "^3.0.6"
   },
   "dependencies": {
+    "bulma": "^0.6.0",
     "classnames": "^2.2.5",
     "humps": "^2.0.0",
     "lodash": "^4.16.1",

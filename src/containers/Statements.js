@@ -36,9 +36,7 @@ class Statements extends Component {
 
 function mapStateToProps(state) {
   const { auth, statements } = state;
-  /*if (!auth.isLogged) {
-    browserHistory.push('/');
-  }*/
+  
   return {
     isLogged: auth.isLogged,
     list: statements.list

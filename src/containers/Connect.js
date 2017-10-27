@@ -34,7 +34,8 @@ class Connect extends Component {
           <div className="box">
             <h2 className="title has-text-grey">Connexion</h2>
             <p className="subtitle has-text-grey">Veuillez vous connecter pour continuer.</p>
-            <Login login={(pseudo, password) => this.login(pseudo, password)}/>
+            <Login login={(pseudo, password) => this.login(pseudo, password)}
+              isLoggingIn={this.props.isLoggingIn}/>
             { this.props.error }
           </div>
         </div>
@@ -49,6 +50,7 @@ function mapStateToProps(state) {
 
   return {
     isLogged: auth.isLogged,
+    isLoggingIn: auth.isLoggingIn,
     error: auth.error
   }
 }

@@ -53,7 +53,8 @@ export default class Login extends Component {
           </div>
         </div>
 
-        <button className="button is-info is-large has-addons is-centered" onClick={() => this.login()}>
+        <button className={"button is-info is-large has-addons is-centered " + (this.props.isLoggingIn ? "is-loading" : "")}
+          onClick={() => this.login()}>
           Se connecter
         </button>
       </div>

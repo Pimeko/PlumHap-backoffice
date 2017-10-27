@@ -27,7 +27,7 @@ export default function auth (
     case "LOGIN_FAILED":
       return {
         ...state,
-        error: action.error.message,
+        error: action.error,
         isLoggingIn: false
       };
     default:

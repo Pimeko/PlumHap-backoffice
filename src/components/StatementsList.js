@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router'
 
 export default class StatementsList extends Component {
-  goToEdit(id) {
+  goToEdit(id, e) {
     browserHistory.push('/statements/' + id);
   }
 
@@ -17,12 +17,12 @@ export default class StatementsList extends Component {
         </thead>
         <tbody>
           {
-            this.props.list.map((statement) => {
-              return <tr>
+            this.props.list.map((statement, i) => {
+              return <tr key={i}>
                   <th>{ statement.data }</th>
                   <td>
                     <button className="button"
-                      onClick={() => this.goToEdit(statement.id)}>
+                      onClick={ this.goToEdit.bind(this, statement.id) }>
                       Edit
                     </button>
                   </td>

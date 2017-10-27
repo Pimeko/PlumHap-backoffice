@@ -14,7 +14,6 @@ class Activities extends Component {
         <Header/>
 
         <Menu active="activities"/>
-        <StatementsList />
 
         <Footer/>
       </div>

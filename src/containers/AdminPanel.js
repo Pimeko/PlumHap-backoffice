@@ -14,7 +14,6 @@ class AdminPanel extends Component {
         <Header/>
 
         <Menu active="admin"/>
-        <StatementsList />
 
         <Footer/>
       </div>

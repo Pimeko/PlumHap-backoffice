@@ -13,7 +13,9 @@ export default function statements (
     case "GET_STATEMENTS_STARTED":
       return {
         ...state,
-        error: ''
+        error: '',
+        hasFetchedStatement: false,
+        hasUpdatedStatement: false
       };
     case "GET_STATEMENTS_SUCCESS":
       return {

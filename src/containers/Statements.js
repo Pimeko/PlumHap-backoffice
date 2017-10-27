@@ -11,7 +11,7 @@ import Footer from '../components/Footer'
 
 class Statements extends Component {
   componentWillMount() {
-    auth_utils.check_auth(this.props.route.connected);
+    auth_utils.check_auth();
     this.props.dispatch(statements.get_statements());
   }
 

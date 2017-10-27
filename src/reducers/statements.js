@@ -1,7 +1,10 @@
 export default function statements (
   state = {
     list: [],
-    error: ''
+    statement: {},
+    error: '',
+    hasFetchedStatement: false,
+    hasUpdatedStatement: false
   },
   action
 ) {
@@ -24,6 +27,45 @@ export default function statements (
       return {
         ...state,
         error: action.error
+      };
+
+    case "GET_STATEMENT_STARTED":
+      return {
+        ...state,
+        error: '',
+        hasFetchedStatement: false
+      };
+    case "GET_STATEMENT_SUCCESS":
+      return {
+        ...state,
+        statement: action.data.statement,
+        error: '',
+        hasFetchedStatement: true
+      };
+    case "GET_STATEMENT_FAILED":
+      return {
+        ...state,
+        error: action.error,
+        hasFetchedStatement: true
+      };
+
+    case "UPDATE_STATEMENT_STARTED":
+      return {
+        ...state,
+        error: '',
+        hasUpdatedStatement: false
+      };
+    case "UPDATE_STATEMENT_SUCCESS":
+      return {
+        ...state,
+        error: '',
+        hasUpdatedStatement: true
+      };
+    case "UPDATE_STATEMENT_FAILED":
+      return {
+        ...state,
+        error: action.error,
+        hasUpdatedStatement: true
       };
     default:
       return state;

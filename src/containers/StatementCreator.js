@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as statements from '../actions/statements'
 import { browserHistory } from 'react-router'
+import * as auth_utils from '../utils/auth'
 
 // Components
 import Header from '../components/Header'
@@ -18,6 +19,10 @@ class StatementCreator extends Component {
 
     this.updateNameValue = this.updateNameValue.bind(this);
     this.create = this.create.bind(this);
+  }
+
+  componentWillMount() {
+    auth_utils.check_auth();
   }
 
   componentWillReceiveProps(nextProps) {

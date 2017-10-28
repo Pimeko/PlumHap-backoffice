@@ -10,7 +10,6 @@ export default function statements (
   },
   action
 ) {
-  console.log(action);
   switch (action.type) {
     case "GET_STATEMENTS_STARTED":
       return {

@@ -4,11 +4,13 @@ import { combineReducers } from 'redux'
 // Reducers
 import auth from './auth';
 import statements from './statements';
+import activities from './activities';
 
 const rootReducer = combineReducers({
   routing,
   auth,
-  statements
+  statements,
+  activities
 })
 
 export default rootReducer

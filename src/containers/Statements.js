@@ -6,7 +6,7 @@ import * as auth_utils from '../utils/auth'
 // Components
 import Header from '../components/Header'
 import Menu from '../components/Menu'
-import StatementsList from '../components/StatementsList'
+import List from '../components/List'
 import StatementAdder from '../components/StatementAdder'
 import Footer from '../components/Footer'
 
@@ -25,7 +25,7 @@ class Statements extends Component {
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
-            <StatementsList list={this.props.list}/>
+            <List titles={["Name"]} list={this.props.list} edit_address="statements"/>
             <StatementAdder/>
           </div>
         </div>

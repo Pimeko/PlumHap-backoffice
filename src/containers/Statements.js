@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as statements from '../actions/statements'
+import * as fetcher from '../actions/fetcher'
 import * as auth_utils from '../utils/auth'
 
 // Components
@@ -11,9 +11,17 @@ import Adder from '../components/Adder'
 import Footer from '../components/Footer'
 
 class Statements extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: 'statement'
+    }
+  }
+
   componentWillMount() {
     auth_utils.check_auth();
-    this.props.dispatch(statements.get_statements());
+    this.props.dispatch(fetcher.get_all(this.state.name));
   }
 
   render() {

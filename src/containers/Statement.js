@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as statements from '../actions/statements'
+import * as fetcher from '../actions/fetcher'
 import * as auth_utils from '../utils/auth'
 import { browserHistory } from 'react-router'
 
@@ -22,18 +22,18 @@ class Statement extends Component {
 
   componentWillMount() {
     auth_utils.check_auth();
-    this.props.dispatch(statements.get_statement(this.props.params.id));
+    this.props.dispatch(fetcher.get_one('statement', this.props.params.id));
   }
 
   update(data) {
-    this.props.dispatch(statements.update_statement({
+    this.props.dispatch(fetcher.update_obj('statement', {
       id: this.props.params.id,
       data: data
     }));
   }
 
   delete() {
-    this.props.dispatch(statements.delete_statement({
+    this.props.dispatch(fetcher.delete_obj('statement', {
       id: this.props.params.id
     }));
   }
@@ -45,7 +45,7 @@ class Statement extends Component {
 
         <Menu active="statements"/>
 
-        <StatementEditor hasFetchedStatement={ this.props.hasFetched }
+        <StatementEditor hasFetched={ this.props.hasFetched }
           obj={ this.props.obj } update={ this.update }
           delete={ this.delete } />
 

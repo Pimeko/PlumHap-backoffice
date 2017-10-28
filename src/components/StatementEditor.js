@@ -12,7 +12,7 @@ export default class StatementEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hasFetchedStatement) {
+    if (nextProps.hasFetched) {
       this.setState({
         ...this.state,
         nameValue: nextProps.obj.data

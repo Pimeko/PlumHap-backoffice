@@ -16,9 +16,6 @@ class StatementCreator extends Component {
     this.state = {
       nameValue: ''
     }
-
-    this.updateNameValue = this.updateNameValue.bind(this);
-    this.create = this.create.bind(this);
   }
 
   componentWillMount() {
@@ -31,13 +28,13 @@ class StatementCreator extends Component {
     }
   }
 
-  updateNameValue (event) {
+  updateNameValue = (event) => {
     this.setState({
       nameValue: event.target.value
     });
   }
 
-  create() {
+  create = () => {
     this.props.dispatch(statements.post_statement({data: this.state.nameValue}));
   }
 

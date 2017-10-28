@@ -11,29 +11,34 @@ import StatementEditor from '../components/StatementEditor'
 import Footer from '../components/Footer'
 
 class Statement extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: 'statement'
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.hasUpdated || nextProps.hasDeleted) {
       browserHistory.push('/statements');
     }
-
-    this.update = this.update.bind(this);
-    this.delete = this.delete.bind(this);
   }
 
   componentWillMount() {
     auth_utils.check_auth();
-    this.props.dispatch(fetcher.get_one('statement', this.props.params.id));
+    this.props.dispatch(fetcher.get_one(this.state.name, this.props.params.id));
   }
 
-  update(data) {
-    this.props.dispatch(fetcher.update_obj('statement', {
+  update = (data) => {
+    this.props.dispatch(fetcher.update_obj(this.state.name, {
       id: this.props.params.id,
       data: data
     }));
   }
 
-  delete() {
-    this.props.dispatch(fetcher.delete_obj('statement', {
+  delete = () => {
+    this.props.dispatch(fetcher.delete_obj(this.state.name, {
       id: this.props.params.id
     }));
   }

@@ -7,8 +7,6 @@ export default class StatementEditor extends Component {
     this.state = {
       nameValue: ''
     }
-
-    this.updateNameValue = this.updateNameValue.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,7 +18,7 @@ export default class StatementEditor extends Component {
     }
   }
 
-  updateNameValue (event) {
+  updateNameValue = (event) => {
     this.setState({
       nameValue: event.target.value
     });

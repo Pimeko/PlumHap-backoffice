@@ -9,51 +9,51 @@ export const get_activities = () =>  {
     () => {});
 }
 
-export const get_statement = (id) =>  {
-  action_generator.generate("get_statement");
+export const get_activitie = (id) =>  {
+  action_generator.generate("get_activitie");
 
   return action_generator.call_get_request(
-    'get_statement',
-    'statements/' + id,
+    'get_activitie',
+    'activities/' + id,
     () => {});
 }
 
-export const update_statement = (statement) =>  {
-  action_generator.generate("update_statement");
+export const update_activitie = (obj) =>  {
+  action_generator.generate("update_activitie");
 
   var body = {
-    data: statement.data
+    data: obj.data
   };
 
   return action_generator.call_request(
-    'update_statement',
-    'statements/' + statement.id,
+    'update_activitie',
+    'activities/' + obj.id,
     'PUT',
     body,
     () => {});
 }
 
-export const delete_statement = (statement) =>  {
-  action_generator.generate("delete_statement");
+export const delete_activitie = (obj) =>  {
+  action_generator.generate("delete_activitie");
 
   return action_generator.call_request(
-    'delete_statement',
-    'statements/' + statement.id,
+    'delete_activitie',
+    'activities/' + obj.id,
     'DELETE',
     {},
     () => {});
 }
 
-export const post_statement = (statement) =>  {
-  action_generator.generate("post_statement");
+export const post_activitie = (obj) =>  {
+  action_generator.generate("post_activitie");
 
   var body = {
-    data: statement.data
+    data: obj.data
   };
 
   return action_generator.call_request(
-    'post_statement',
-    'statements/',
+    'post_activitie',
+    'activities/',
     'POST',
     body,
     () => {});

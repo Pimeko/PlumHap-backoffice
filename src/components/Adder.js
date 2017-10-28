@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 
-export default class StatementAdder extends Component {
+export default class Adder extends Component {
   add() {
-    browserHistory.push('/statement-creator');
+    browserHistory.push('/' + this.props.type + '-creator');
   }
 
   render() {

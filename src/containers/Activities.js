@@ -7,7 +7,7 @@ import * as auth_utils from '../utils/auth'
 import Header from '../components/Header'
 import Menu from '../components/Menu'
 import List from '../components/List'
-import StatementAdder from '../components/StatementAdder'
+import Adder from '../components/Adder'
 import Footer from '../components/Footer'
 
 class Activities extends Component {
@@ -26,7 +26,7 @@ class Activities extends Component {
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
             <List titles={["Name", "Nb times", "Default"]} list={this.props.list} edit_address="activities"/>
-            <StatementAdder/>
+            <Adder type='activity'/>
           </div>
         </div>
 

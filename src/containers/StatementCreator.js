@@ -26,7 +26,7 @@ class StatementCreator extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hasPostedStatement) {
+    if (nextProps.hasPosted) {
       browserHistory.push('/statements');
     }
   }
@@ -75,7 +75,7 @@ function mapStateToProps(state) {
   const { statements } = state;
 
   return {
-    hasPostedStatement: statements.hasPostedStatement
+    hasPosted: statements.hasPosted
   }
 }
 

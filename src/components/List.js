@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router'
 
 import ListRow from './ListRow'
 
@@ -11,7 +10,7 @@ export default class List extends Component {
       list_rows.push(row);
       return row;
     })
-    
+
     return (
       <table className="table has-text-centered">
         <thead>

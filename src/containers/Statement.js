@@ -12,7 +12,7 @@ import Footer from '../components/Footer'
 
 class Statement extends Component {
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hasUpdatedStatement || nextProps.hasDeletedStatement) {
+    if (nextProps.hasUpdated || nextProps.hasDeleted) {
       browserHistory.push('/statements');
     }
 
@@ -45,8 +45,8 @@ class Statement extends Component {
 
         <Menu active="statements"/>
 
-        <StatementEditor hasFetchedStatement={ this.props.hasFetchedStatement }
-          statement={ this.props.statement } update={ this.update }
+        <StatementEditor hasFetchedStatement={ this.props.hasFetched }
+          obj={ this.props.obj } update={ this.update }
           delete={ this.delete } />
 
         <Footer/>
@@ -59,10 +59,10 @@ function mapStateToProps(state) {
   const { statements } = state;
 
   return {
-    statement: statements.statement,
-    hasFetchedStatement: statements.hasFetchedStatement,
-    hasUpdatedStatement: statements.hasUpdatedStatement,
-    hasDeletedStatement: statements.hasDeletedStatement
+    obj: statements.obj,
+    hasFetched: statements.hasFetched,
+    hasUpdated: statements.hasUpdated,
+    hasDeleted: statements.hasDeleted
   }
 }
 

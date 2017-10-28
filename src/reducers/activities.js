@@ -6,7 +6,7 @@ export default function statements (
     hasFetched: false,
     hasUpdated: false,
     hasDeleted: false,
-    hasPostedS: false
+    hasPosted: false
   },
   action
 ) {
@@ -34,20 +34,20 @@ export default function statements (
         error: action.error
       };
 
-    case "GET_ACTIVITIES_STARTED":
+    case "GET_ACTIVITY_STARTED":
       return {
         ...state,
         error: '',
         hasFetched: false
       };
-    case "GET_ACTIVITIES_SUCCESS":
+    case "GET_ACTIVITY_SUCCESS":
       return {
         ...state,
         activity: action.data.statement,
         error: '',
         hasFetched: true
       };
-    case "GET_ACTIVITIES_FAILED":
+    case "GET_ACTIVITY_FAILED":
       return {
         ...state,
         error: action.error,

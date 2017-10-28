@@ -3,14 +3,13 @@ import { combineReducers } from 'redux'
 
 // Reducers
 import auth from './auth';
-import statements from './statements';
-import activities from './activities';
+import create_fetcher from './fetcher';
 
 const rootReducer = combineReducers({
   routing,
   auth,
-  statements,
-  activities
+  statements : create_fetcher('statement'),
+  activities : create_fetcher('activitie')
 })
 
 export default rootReducer

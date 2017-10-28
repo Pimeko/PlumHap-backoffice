@@ -4,7 +4,9 @@ export default function statements (
     statement: {},
     error: '',
     hasFetchedStatement: false,
-    hasUpdatedStatement: false
+    hasUpdatedStatement: false,
+    hasDeletedStatement: false,
+    hasPostedStatement: false
   },
   action
 ) {
@@ -15,7 +17,9 @@ export default function statements (
         ...state,
         error: '',
         hasFetchedStatement: false,
-        hasUpdatedStatement: false
+        hasUpdatedStatement: false,
+        hasDeletedStatement: false,
+        hasPostedStatement: false
       };
     case "GET_STATEMENTS_SUCCESS":
       return {
@@ -68,6 +72,40 @@ export default function statements (
         ...state,
         error: action.error,
         hasUpdatedStatement: true
+      };
+
+    case "DELETE_STATEMENT_STARTED":
+      return {
+        ...state,
+        error: '',
+      };
+    case "DELETE_STATEMENT_SUCCESS":
+      return {
+        ...state,
+        error: '',
+        hasDeletedStatement: true
+      };
+    case "DELETE_STATEMENT_FAILED":
+      return {
+        ...state,
+        error: action.error
+      };
+
+    case "POST_STATEMENT_STARTED":
+      return {
+        ...state,
+        error: '',
+      };
+    case "POST_STATEMENT_SUCCESS":
+      return {
+        ...state,
+        error: '',
+        hasPostedStatement: true
+      };
+    case "POST_STATEMENT_FAILED":
+      return {
+        ...state,
+        error: action.error
       };
     default:
       return state;

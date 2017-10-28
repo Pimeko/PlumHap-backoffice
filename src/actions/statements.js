@@ -32,3 +32,29 @@ export const update_statement = (statement) =>  {
     body,
     () => {});
 }
+
+export const delete_statement = (statement) =>  {
+  action_generator.generate("delete_statement");
+
+  return action_generator.call_request(
+    'delete_statement',
+    'statements/' + statement.id,
+    'DELETE',
+    {},
+    () => {});
+}
+
+export const post_statement = (statement) =>  {
+  action_generator.generate("post_statement");
+
+  var body = {
+    data: statement.data
+  };
+
+  return action_generator.call_request(
+    'post_statement',
+    'statements/',
+    'POST',
+    body,
+    () => {});
+}

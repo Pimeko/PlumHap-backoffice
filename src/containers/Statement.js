@@ -7,35 +7,17 @@ import { browserHistory } from 'react-router'
 // Components
 import Header from '../components/Header'
 import Menu from '../components/Menu'
+import StatementEditor from '../components/StatementEditor'
 import Footer from '../components/Footer'
 
 class Statement extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      nameValue: ''
-    }
-
-    this.updateNameValue = this.updateNameValue.bind(this);
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hasUpdatedStatement) {
+    if (nextProps.hasUpdatedStatement || nextProps.hasDeletedStatement) {
       browserHistory.push('/statements');
     }
-    else if (nextProps.hasFetchedStatement) {
-      this.setState({
-        ...this.state,
-        nameValue: nextProps.statement.data
-      })
-    }
-  }
 
-  updateNameValue (event) {
-    this.setState({
-      nameValue: event.target.value
-    });
+    this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   componentWillMount() {
@@ -43,10 +25,16 @@ class Statement extends Component {
     this.props.dispatch(statements.get_statement(this.props.params.id));
   }
 
-  update() {
+  update(data) {
     this.props.dispatch(statements.update_statement({
       id: this.props.params.id,
-      data: this.state.nameValue
+      data: data
+    }));
+  }
+
+  delete() {
+    this.props.dispatch(statements.delete_statement({
+      id: this.props.params.id
     }));
   }
 
@@ -57,23 +45,9 @@ class Statement extends Component {
 
         <Menu active="statements"/>
 
-        <div className="hero-body column is-4 is-offset-4 has-text-centered">
-          <div className="box">
-
-            <div className="field">
-              <div className="control">
-                <input className="input" type="text" placeholder="Message"
-                  value={this.state.nameValue} onChange={this.updateNameValue}
-                  autoFocus/>
-              </div>
-            </div>
-
-            <button className="button is-info is-large has-addons is-centered"
-              onClick={() => this.update()}>
-              Update
-            </button>
-          </div>
-        </div>
+        <StatementEditor hasFetchedStatement={ this.props.hasFetchedStatement }
+          statement={ this.props.statement } update={ this.update }
+          delete={ this.delete } />
 
         <Footer/>
       </div>
@@ -82,15 +56,13 @@ class Statement extends Component {
 }
 
 function mapStateToProps(state) {
-  const { auth, statements } = state;
-  /*if (!auth.isLogged) {
-    browserHistory.push('/');
-  }*/
+  const { statements } = state;
+
   return {
-    isLogged: auth.isLogged,
     statement: statements.statement,
     hasFetchedStatement: statements.hasFetchedStatement,
-    hasUpdatedStatement: statements.hasUpdatedStatement
+    hasUpdatedStatement: statements.hasUpdatedStatement,
+    hasDeletedStatement: statements.hasDeletedStatement
   }
 }
 

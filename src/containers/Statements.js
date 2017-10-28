@@ -7,6 +7,7 @@ import * as auth_utils from '../utils/auth'
 import Header from '../components/Header'
 import Menu from '../components/Menu'
 import StatementsList from '../components/StatementsList'
+import StatementAdder from '../components/StatementAdder'
 import Footer from '../components/Footer'
 
 class Statements extends Component {
@@ -25,6 +26,7 @@ class Statements extends Component {
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
             <StatementsList list={this.props.list}/>
+            <StatementAdder/>
           </div>
         </div>
 
@@ -36,7 +38,7 @@ class Statements extends Component {
 
 function mapStateToProps(state) {
   const { auth, statements } = state;
-  
+
   return {
     isLogged: auth.isLogged,
     list: statements.list

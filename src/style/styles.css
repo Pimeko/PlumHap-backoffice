@@ -16,6 +16,10 @@ html {
   font-family: mobiloFont-light;
 }
 
+.bg-white {
+  background-color: #FAFAFA;
+}
+
 table {
   margin: 0 auto;
 }

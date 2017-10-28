@@ -8,7 +8,7 @@ export default class Menu extends Component {
 
   render() {
     return (
-      <div className="tabs is-centered">
+      <div className="tabs is-centered bg-white">
         <ul>
           <li className={ this.props.active === "statements" ? "is-active" : "" }>
             <a onClick={ () => this.changeTab("statements") }>Statements</a>

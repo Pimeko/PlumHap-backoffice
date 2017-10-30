@@ -31,6 +31,7 @@ export default class StatementEditor extends Component {
 
           <div className="field">
             <div className="control">
+              <label className="label">Message</label>
               <input className="input" type="text" placeholder="Message"
                 value={this.state.nameValue} onChange={this.updateNameValue}
                 autoFocus/>

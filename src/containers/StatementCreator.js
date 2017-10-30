@@ -49,6 +49,7 @@ class StatementCreator extends Component {
           <div className="box">
             <div className="field">
               <div className="control">
+                <label className="label">Message</label>
                 <input className="input" type="text" placeholder="Message"
                   value={this.state.nameValue} onChange={this.updateNameValue}
                   autoFocus/>

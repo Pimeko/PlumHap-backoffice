@@ -2,10 +2,10 @@ import React from 'react'
 import { Route } from 'react-router'
 import Connect from './containers/Connect'
 import Statements from './containers/Statements'
-import CollectionDisplayer from './containers/CollectionDisplayer'
 import Statement from './containers/Statement'
 import StatementCreator from './containers/StatementCreator'
 import Activities from './containers/Activities'
+import ActivityCreator from './containers/ActivityCreator'
 import AdminPanel from './containers/AdminPanel'
 
 export default
@@ -15,5 +15,6 @@ export default
     <Route path="/statements/:id" component={Statement} />
     <Route path="/statement-creator" component={StatementCreator} />
     <Route path="/activities" component={Activities} />
+    <Route path="/activity-creator" component={ActivityCreator} />
     <Route path="/admin" component={AdminPanel} />
 </Route>

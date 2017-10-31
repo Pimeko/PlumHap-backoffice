@@ -12,8 +12,9 @@ export default class StatementField extends Component {
   }
 
   onChange = (val) => {
-    this.setState({message: val});
-    this.props.onChange({message: val});
+    this.setState({message: val}, () => {
+    this.props.onChange(this.state);
+    });
   }
 
   render() {

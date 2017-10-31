@@ -9,10 +9,7 @@ import 'react-select/dist/react-select.css';
 // Components
 import Header from '../components/Common/Header'
 import Menu from '../components/Common/Menu'
-import InputField from '../components/Field/InputField'
-import TextArea from '../components/Field/TextArea'
-import CheckBox from '../components/Field/CheckBox'
-import Incrementor from '../components/Field/Incrementor'
+import ActivityField from '../components/ActivityField'
 import Footer from '../components/Common/Footer'
 
 class ActivityCreator extends Component {
@@ -20,11 +17,8 @@ class ActivityCreator extends Component {
     super(props);
 
     this.state = {
-      title: '',
-      description: '',
-      level: "one",
-      nbTimes: 0,
-      default: false
+      name: 'statement',
+      field: null
     }
   }
 
@@ -39,27 +33,12 @@ class ActivityCreator extends Component {
   }
 
   create = () => {
-    this.props.dispatch(fetcher.post_obj('activitie', {data: this.state.nameValue}));
+    this.props.dispatch(fetcher.post_obj('activitie', {
+      data: this.state.field}));
   }
 
-  onTitleChange = (val) => {
-    this.setState({title: val})
-  }
-
-  onDescriptionChange = (val) => {
-    this.setState({description: val})
-  }
-
-  onDefaultChange = (val) => {
-    this.setState({default: val});
-  }
-
-  onTimesChange = (val) => {
-    this.setState({nbTimes: val});
-  }
-
-  onLevelChange = (val) => {
-    this.setState({level: val.value});
+  onFieldChange = (field) => {
+    this.setState({field: field});
   }
 
   render() {
@@ -71,37 +50,12 @@ class ActivityCreator extends Component {
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
-            <InputField name="Title" onChange={this.onTitleChange} autoFocus/>
+            <ActivityField onChange={this.onFieldChange}/>
 
-            <TextArea name="Description" onChange={this.onDescriptionChange}/>
-
-            <div className="field">
-              <div className="control">
-                <label className="label">Level</label>
-                <Select
-                  value={this.state.level}
-                  placeholder="Level"
-                  options={[
-                            { value: '1', label: '1' },
-                            { value: '2', label: '2' },
-                            { value: '3', label: '3' }
-                          ]}
-                  onChange={this.onLevelChange}
-                  clearable={false}
-                />
-              </div>
-            </div>
-
-            <Incrementor name="Nb times" onChange={this.onTimesChange}/>
-
-            <CheckBox name="Is default" onChange={this.onDefaultChange}/>
-
-            <div>
-              <button className="button is-info is-large has-addons is-centered"
-                onClick={() => this.create()}>
-                Create
-              </button>
-            </div>
+            <button className="button is-info is-large has-addons is-centered"
+              onClick={() => this.create()}>
+              Create
+            </button>
           </div>
         </div>
 

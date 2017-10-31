@@ -19,7 +19,7 @@ export default class ListRow extends Component {
   render() {
     return <tr>
           { Object.keys(this.props.el).map(function(key, i) {
-            if (key === 'id') {
+            if (key === 'id' || (this.props.exclude && this.props.exclude.indexOf(key) > -1)) {
               return null
             }
             else {

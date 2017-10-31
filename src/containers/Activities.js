@@ -33,7 +33,9 @@ class Activities extends Component {
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
-            <List titles={["Name", "Nb times", "Default"]} list={this.props.list} edit_address="activities"/>
+            <List titles={["Title", "Nb Times", "Level", "Default"]}
+            exclude={["description"]}
+            list={this.props.list} edit_address="activities"/>
             <Adder type='activity'/>
           </div>
         </div>

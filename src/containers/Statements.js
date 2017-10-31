@@ -4,11 +4,11 @@ import * as fetcher from '../actions/fetcher'
 import * as auth_utils from '../utils/auth'
 
 // Components
-import Header from '../components/Header'
-import Menu from '../components/Menu'
+import Header from '../components/Common/Header'
+import Menu from '../components/Common/Menu'
 import List from '../components/List'
 import Adder from '../components/Adder'
-import Footer from '../components/Footer'
+import Footer from '../components/Common/Footer'
 
 class Statements extends Component {
   constructor(props) {

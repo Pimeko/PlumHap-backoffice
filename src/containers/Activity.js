@@ -7,13 +7,13 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 // Components
-import Header from '../components/Header'
-import Menu from '../components/Menu'
+import Header from '../components/Common/Header'
+import Menu from '../components/Common/Menu'
 import InputField from '../components/Field/InputField'
 import TextArea from '../components/Field/TextArea'
 import CheckBox from '../components/Field/CheckBox'
 import Incrementor from '../components/Field/Incrementor'
-import Footer from '../components/Footer'
+import Footer from '../components/Common/Footer'
 
 class Activity extends Component {
   constructor(props) {

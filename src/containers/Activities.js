@@ -1,19 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as activities from '../actions/activities'
+import * as fetcher from '../actions/fetcher'
 import * as auth_utils from '../utils/auth'
 
 // Components
-import Header from '../components/Header'
-import Menu from '../components/Menu'
+import Header from '../components/Common/Header'
+import Menu from '../components/Common/Menu'
 import List from '../components/List'
 import Adder from '../components/Adder'
-import Footer from '../components/Footer'
+import Footer from '../components/Common/Footer'
 
 class Activities extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: 'activitie'
+    }
+  }
+
   componentWillMount() {
     auth_utils.check_auth();
-    this.props.dispatch(activities.get_activities());
+    this.props.dispatch(fetcher.get_all(this.state.name));
   }
 
   render() {

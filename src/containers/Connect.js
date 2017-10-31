@@ -4,9 +4,9 @@ import { login } from '../actions/auth'
 import { browserHistory } from 'react-router'
 
 // Components
-import Header from '../components/Header'
+import Header from '../components/Common/Header'
 import Login from '../components/Login'
-import Footer from '../components/Footer'
+import Footer from '../components/Common/Footer'
 
 class Connect extends Component {
   componentWillMount() {

@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as statements from '../actions/statements'
+import * as fetcher from '../actions/fetcher'
 import { browserHistory } from 'react-router'
 import * as auth_utils from '../utils/auth'
 
 // Components
-import Header from '../components/Header'
-import Menu from '../components/Menu'
-import Footer from '../components/Footer'
+import Header from '../components/Common/Header'
+import Menu from '../components/Common/Menu'
+import StatementField from '../components/StatementField'
+import Footer from '../components/Common/Footer'
 
 class StatementCreator extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      nameValue: ''
+      name: 'statement',
+      field: null
     }
   }
 
@@ -28,14 +30,12 @@ class StatementCreator extends Component {
     }
   }
 
-  updateNameValue = (event) => {
-    this.setState({
-      nameValue: event.target.value
-    });
+  onFieldChange = (field) => {
+    this.setState({field: field});
   }
 
   create = () => {
-    this.props.dispatch(statements.post_statement({data: this.state.nameValue}));
+    this.props.dispatch(fetcher.post_obj(this.state.name, {data: this.state.field}));
   }
 
   render() {
@@ -47,14 +47,7 @@ class StatementCreator extends Component {
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
-            <div className="field">
-              <div className="control">
-                <label className="label">Message</label>
-                <input className="input" type="text" placeholder="Message"
-                  value={this.state.nameValue} onChange={this.updateNameValue}
-                  autoFocus/>
-              </div>
-            </div>
+            <StatementField onChange={this.onFieldChange}/>
 
             <button className="button is-info is-large has-addons is-centered"
               onClick={() => this.create()}>

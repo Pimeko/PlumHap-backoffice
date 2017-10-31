@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as statements from '../actions/statements'
+import * as fetcher from '../actions/fetcher'
 import { browserHistory } from 'react-router'
 import * as auth_utils from '../utils/auth'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 // Components
-import Header from '../components/Header'
-import Menu from '../components/Menu'
+import Header from '../components/Common/Header'
+import Menu from '../components/Common/Menu'
 import InputField from '../components/Field/InputField'
 import TextArea from '../components/Field/TextArea'
 import CheckBox from '../components/Field/CheckBox'
 import Incrementor from '../components/Field/Incrementor'
-import Footer from '../components/Footer'
+import Footer from '../components/Common/Footer'
 
 class ActivityCreator extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class ActivityCreator extends Component {
   }
 
   create = () => {
-    this.props.dispatch(statements.post_statement({data: this.state.nameValue}));
+    this.props.dispatch(fetcher.post_obj('activitie', {data: this.state.nameValue}));
   }
 
   onTitleChange = (val) => {

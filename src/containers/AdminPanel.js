@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 // Components
-import Header from '../components/Header'
-import Menu from '../components/Menu'
-import Footer from '../components/Footer'
+import Header from '../components/Common/Header'
+import Menu from '../components/Common/Menu'
+import Footer from '../components/Common/Footer'
 
 class AdminPanel extends Component {
   render() {

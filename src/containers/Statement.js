@@ -5,11 +5,10 @@ import * as auth_utils from '../utils/auth'
 import { browserHistory } from 'react-router'
 
 // Components
-import Header from '../components/Header'
-import Menu from '../components/Menu'
+import Header from '../components/Common/Header'
+import Menu from '../components/Common/Menu'
 import StatementField from '../components/StatementField'
-import Footer from '../components/Footer'
-import ReactStateDisplayer from '../components/Debug/ReactStateDisplayer'
+import Footer from '../components/Common/Footer'
 
 class Statement extends Component {
   constructor(props) {
@@ -72,11 +71,9 @@ class Statement extends Component {
               onClick={this.delete}>
               Delete
             </button>
-
-            <ReactStateDisplayer state={this.state}/>
           </div>
         </div>
-        
+
         <Footer/>
       </div>
     );

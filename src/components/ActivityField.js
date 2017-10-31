@@ -1,0 +1,25 @@
+import React, { Component } from 'react'
+
+import InputField from '../components/Field/InputField'
+
+export default class ActivityField extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      message: ''
+    }
+  }
+
+  onChange = (val) => {
+    this.setState({message: val});
+    this.props.onChange({message: val});
+  }
+
+  render() {
+    return (
+      <InputField name="Message" onChange={this.onChange} autoFocus
+      hasFetched={ this.props.hasFetched } obj={ this.props.obj }/>
+    );
+  };
+}

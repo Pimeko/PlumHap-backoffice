@@ -35,8 +35,10 @@ class Activity extends Component {
   update = () => {
     var toSend = {
       id: this.props.params.id,
-      data: this.state.field
+      ...this.state.field
     };
+
+    console.log(toSend);
 
     this.props.dispatch(fetcher.update_obj(this.state.name, toSend));
   }

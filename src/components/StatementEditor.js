@@ -5,7 +5,7 @@ export default class StatementEditor extends Component {
     super(props);
 
     this.state = {
-      nameValue: ''
+      field: null
     }
   }
 
@@ -18,10 +18,8 @@ export default class StatementEditor extends Component {
     }
   }
 
-  updateNameValue = (event) => {
-    this.setState({
-      nameValue: event.target.value
-    });
+  onFieldChange = (field) => {
+    this.setState({field: field});
   }
 
   render() {

@@ -15,7 +15,7 @@ import CheckBox from '../components/Field/CheckBox'
 import Incrementor from '../components/Field/Incrementor'
 import Footer from '../components/Footer'
 
-class ActivityCreator extends Component {
+class Activity extends Component {
   constructor(props) {
     super(props);
 
@@ -119,4 +119,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(ActivityCreator);
+export default connect(mapStateToProps)(Activity);

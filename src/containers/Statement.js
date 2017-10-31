@@ -7,15 +7,17 @@ import { browserHistory } from 'react-router'
 // Components
 import Header from '../components/Header'
 import Menu from '../components/Menu'
-import StatementEditor from '../components/StatementEditor'
+import StatementField from '../components/StatementField'
 import Footer from '../components/Footer'
+import ReactStateDisplayer from '../components/Debug/ReactStateDisplayer'
 
 class Statement extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: 'statement'
+      name: 'statement',
+      field: null
     }
   }
 
@@ -30,17 +32,23 @@ class Statement extends Component {
     this.props.dispatch(fetcher.get_one(this.state.name, this.props.params.id));
   }
 
-  update = (data) => {
-    this.props.dispatch(fetcher.update_obj(this.state.name, {
+  update = () => {
+    var toSend = {
       id: this.props.params.id,
-      data: data
-    }));
+      data: this.state.field
+    };
+
+    this.props.dispatch(fetcher.update_obj(this.state.name, toSend));
   }
 
   delete = () => {
     this.props.dispatch(fetcher.delete_obj(this.state.name, {
       id: this.props.params.id
     }));
+  }
+
+  onFieldChange = (field) => {
+    this.setState({field: field});
   }
 
   render() {
@@ -50,10 +58,25 @@ class Statement extends Component {
 
         <Menu active="statements"/>
 
-        <StatementEditor hasFetched={ this.props.hasFetched }
-          obj={ this.props.obj } update={ this.update }
-          delete={ this.delete } />
+        <div className="hero-body column is-4 is-offset-4 has-text-centered">
+          <div className="box">
+            <StatementField onChange={this.onFieldChange}
+            hasFetched={ this.props.hasFetched } obj={ this.props.obj }/>
 
+            <button className="button is-info is-large has-addons is-centered"
+              onClick={this.update}>
+              Update
+            </button>
+
+            <button className="button is-danger is-large has-addons is-centered"
+              onClick={this.delete}>
+              Delete
+            </button>
+
+            <ReactStateDisplayer state={this.state}/>
+          </div>
+        </div>
+        
         <Footer/>
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Incrementor extends Component {
+export default class TextArea extends Component {
   constructor(props) {
     super(props);
 
@@ -22,9 +22,9 @@ export default class Incrementor extends Component {
       <div className="field">
         <div className="control">
           <label className="label">{this.props.name}</label>
-          <input className="input" type="text" placeholder="Message"
-            value={this.state.val} onChange={this.onChange}
-            autoFocus/>
+          <textarea className="textarea" placeholder={this.props.name}
+          onChange={this.onChange} autoFocus={this.props.autoFocus}>
+          </textarea>
         </div>
       </div>
     );

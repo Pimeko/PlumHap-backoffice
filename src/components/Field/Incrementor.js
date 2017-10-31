@@ -40,7 +40,7 @@ export default class Incrementor extends Component {
             </button>
             { this.state.val }
             <button className="button is-small has-addons is-centered"
-            disabled={this.state.val == 10}
+            disabled={this.state.val === 10}
             onClick={this.plus}>
               +
             </button>

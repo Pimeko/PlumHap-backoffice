@@ -20,7 +20,8 @@ export default class StatementField extends Component {
   render() {
     return (
       <InputField name="Message" onChange={this.onChange} autoFocus
-      hasFetched={ this.props.hasFetched } obj={ this.props.obj }/>
+      hasFetched={ this.props.hasFetched } obj={ this.props.obj }
+      objName="message"/>
     );
   };
 }

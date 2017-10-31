@@ -20,7 +20,8 @@ export default function create_fetcher(name) {
           hasFetched: false,
           hasUpdated: false,
           hasDeleted: false,
-          hasPosted: false
+          hasPosted: false,
+          obj: {}
         };
       case "GET_" + name + "S_SUCCESS":
         return {

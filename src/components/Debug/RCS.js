@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class ReactStateDisplayer extends Component {
+export default class RCS extends Component {
   display = () => {
     console.log("React state : ", this.props.state);
   }

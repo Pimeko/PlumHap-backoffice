@@ -85,7 +85,10 @@ function mapStateToProps(state) {
   const { activities } = state;
 
   return {
-    hasPosted: activities.hasPosted
+    obj: activities.obj,
+    hasFetched: activities.hasFetched,
+    hasUpdated: activities.hasUpdated,
+    hasDeleted: activities.hasDeleted
   }
 }
 

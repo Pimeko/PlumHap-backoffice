@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import Select from 'react-select';
 
-export default class TextArea extends Component {
+export default class DropDown extends Component {
   constructor(props) {
     super(props);
 
@@ -12,15 +13,14 @@ export default class TextArea extends Component {
   componentWillReceiveProps(nextProps) {
     if (!this.props.hasFetched && nextProps.hasFetched) {
       this.setState({
-        val: nextProps.obj[this.props.objName]
+        val: nextProps.obj[this.props.objName].toString()
       }, () => {
         this.props.onChange(this.state.val);
       })
     }
   }
 
-  onChange = (event) => {
-    let newVal = event.target.value;
+  onChange = (newVal) => {
     this.setState({
       val: newVal
     });
@@ -32,10 +32,13 @@ export default class TextArea extends Component {
       <div className="field">
         <div className="control">
           <label className="label">{this.props.name}</label>
-          <textarea className="textarea" placeholder={this.props.name}
-          value = {this.state.val}
-          onChange={this.onChange} autoFocus={this.props.autoFocus}>
-          </textarea>
+          <Select
+            value={this.state.val}
+            placeholder={this.props.name}
+            options={this.props.options}
+            onChange={this.onChange}
+            clearable={false}
+          />
         </div>
       </div>
     );

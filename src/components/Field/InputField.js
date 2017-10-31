@@ -12,7 +12,7 @@ export default class Incrementor extends Component {
   componentWillReceiveProps(nextProps) {
     if (!this.props.hasFetched && nextProps.hasFetched) {
       this.setState({
-        val: nextProps.obj.data
+        val: nextProps.obj[this.props.objName]
       }, () => {
         this.props.onChange(this.state.val);
       })

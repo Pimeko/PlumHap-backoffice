@@ -9,6 +9,16 @@ export default class CheckBox extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.hasFetched && nextProps.hasFetched) {
+      this.setState({
+        val: nextProps.obj[this.props.objName]
+      }, () => {
+        this.props.onChange(this.state.val);
+      })
+    }
+  }
+
   onChange = () => {
     let newVal = !this.state.val;
     this.setState({
@@ -22,7 +32,7 @@ export default class CheckBox extends Component {
       <div className="field">
         <div className="control has-text-centered">
           <label className="checkbox">
-            <input type="checkbox" onChange={this.onChange}/>
+            <input type="checkbox" onChange={this.onChange} checked={this.state.val}/>
              {this.props.name}
           </label>
         </div>

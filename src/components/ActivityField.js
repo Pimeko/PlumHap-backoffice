@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import Select from 'react-select';
 import InputField from '../components/Field/InputField'
 import TextArea from '../components/Field/TextArea'
 import CheckBox from '../components/Field/CheckBox'
 import Incrementor from '../components/Field/Incrementor'
+import DropDown from '../components/Field/DropDown'
 
 export default class ActivityField extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class ActivityField extends Component {
       title: '',
       description: '',
       level: "one",
-      nbTimes: 0,
+      nb_times: 0,
       default: false
     }
   }
@@ -47,30 +47,29 @@ export default class ActivityField extends Component {
     return (
       <div>
         <InputField name="Title" onChange={this.onTitleChange} autoFocus
-        hasFetched={ this.props.hasFetched } obj={ this.props.obj }/>
+        hasFetched={ this.props.hasFetched } obj={ this.props.obj }
+        objName="title"/>
 
-        <TextArea name="Description" onChange={this.onDescriptionChange}/>
+        <TextArea name="Description" onChange={this.onDescriptionChange}
+        hasFetched={ this.props.hasFetched } obj={ this.props.obj }
+        objName="description"/>
 
-        <div className="field">
-          <div className="control">
-            <label className="label">Level</label>
-            <Select
-              value={this.state.level}
-              placeholder="Level"
-              options={[
-                        { value: '1', label: '1' },
-                        { value: '2', label: '2' },
-                        { value: '3', label: '3' }
-                      ]}
-              onChange={this.onLevelChange}
-              clearable={false}
-            />
-          </div>
-        </div>
+        <DropDown name="Level" onChange={this.onLevelChange}
+        options={[
+                  { value: '1', label: '1' },
+                  { value: '2', label: '2' },
+                  { value: '3', label: '3' }
+                ]}
+        hasFetched={ this.props.hasFetched } obj={ this.props.obj }
+        objName="level"/>
 
-        <Incrementor name="Nb times" onChange={this.onTimesChange}/>
+        <Incrementor name="Nb times" onChange={this.onTimesChange}
+        hasFetched={ this.props.hasFetched } obj={ this.props.obj }
+        objName="nb_times"/>
 
-        <CheckBox name="Is default" onChange={this.onDefaultChange}/>
+        <CheckBox name="Is default" onChange={this.onDefaultChange}
+        hasFetched={ this.props.hasFetched } obj={ this.props.obj }
+        objName="default"/>
       </div>
     );
   };

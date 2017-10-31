@@ -35,7 +35,8 @@ class StatementCreator extends Component {
   }
 
   create = () => {
-    this.props.dispatch(fetcher.post_obj(this.state.name, {data: this.state.field}));
+    this.props.dispatch(fetcher.post_obj(this.state.name, {
+      data: this.state.field}));
   }
 
   render() {

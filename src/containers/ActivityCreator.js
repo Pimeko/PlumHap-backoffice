@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
 import { browserHistory } from 'react-router'
 import * as auth_utils from '../utils/auth'
-import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 // Components

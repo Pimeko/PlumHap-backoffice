@@ -9,6 +9,16 @@ export default class Incrementor extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.hasFetched && nextProps.hasFetched) {
+      this.setState({
+        val: nextProps.obj[this.props.objName]
+      }, () => {
+        this.props.onChange(this.state.val);
+      })
+    }
+  }
+
   plus = () => {
     let newVal = this.state.val + 1
     this.setState({
@@ -34,7 +44,7 @@ export default class Incrementor extends Component {
 
           <div className="has-text-centered">
             <button className="button is-small has-addons is-centered"
-            disabled={this.state.val <= 0}
+            disabled={this.state.val <= 1}
             onClick={this.minus}>
               -
             </button>

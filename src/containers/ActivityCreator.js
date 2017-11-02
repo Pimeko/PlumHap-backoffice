@@ -3,12 +3,10 @@ import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
 import { browserHistory } from 'react-router'
 import 'react-select/dist/react-select.css';
+import * as page from '../actions/page'
 
 // Components
-import Header from '../components/Common/Header'
-import Menu from '../components/Common/Menu'
 import ActivityField from '../components/ActivityField'
-import Footer from '../components/Common/Footer'
 
 class ActivityCreator extends Component {
   constructor(props) {
@@ -19,6 +17,10 @@ class ActivityCreator extends Component {
       field: null,
       hasFormError: true
     }
+  }
+
+  componentWillMount(nextProps) {
+      this.props.dispatch(page.change_tab('activities'));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,17 +44,9 @@ class ActivityCreator extends Component {
     });
   }
 
-  changeTab = () => {
-    this.props.dispatch(fetcher.clear_error(this.state.name));
-  }
-
   render() {
     return (
       <div>
-        <Header/>
-
-        <Menu active="activities" changeTab={this.changeTab}/>
-
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
             <ActivityField onChange={this.onFieldChange}/>
@@ -63,8 +57,6 @@ class ActivityCreator extends Component {
             </button>
           </div>
         </div>
-
-        <Footer/>
       </div>
     );
   };

@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
 import { browserHistory } from 'react-router'
+import * as page from '../actions/page'
 
 // Components
-import Header from '../components/Common/Header'
-import Menu from '../components/Common/Menu'
 import StatementField from '../components/StatementField'
-import Footer from '../components/Common/Footer'
 
 class Statement extends Component {
   constructor(props) {
@@ -20,14 +18,15 @@ class Statement extends Component {
     }
   }
 
+  componentWillMount(nextProps) {
+    this.props.dispatch(page.change_tab('statements'));
+    this.props.dispatch(fetcher.get_one(this.state.name, this.props.params.id));
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.hasUpdated || nextProps.hasDeleted) {
       browserHistory.push('/statements');
     }
-  }
-
-  componentWillMount() {
-    this.props.dispatch(fetcher.get_one(this.state.name, this.props.params.id));
   }
 
   update = () => {
@@ -52,17 +51,9 @@ class Statement extends Component {
     });
   }
 
-  changeTab = () => {
-    this.props.dispatch(fetcher.clear_error(this.state.name));
-  }
-
   render() {
     return (
       <div>
-        <Header/>
-
-        <Menu active="statements" changeTab={this.changeTab}/>
-
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
             <StatementField onChange={this.onFieldChange}
@@ -79,8 +70,6 @@ class Statement extends Component {
             </button>
           </div>
         </div>
-
-        <Footer/>
       </div>
     );
   };

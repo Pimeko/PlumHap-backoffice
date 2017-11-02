@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
+import * as page from '../actions/page'
 
 // Components
 import Header from '../components/Common/Header'
@@ -18,20 +19,14 @@ class Activities extends Component {
     }
   }
 
-  componentWillMount() {
+  componentWillMount(nextProps) {
+    this.props.dispatch(page.change_tab('activities'));
     this.props.dispatch(fetcher.get_all(this.state.name));
-  }
-
-  changeTab = () => {
-    this.props.dispatch(fetcher.clear_error(this.state.name));
   }
 
   render() {
     return (
       <div>
-        <Header/>
-
-        <Menu active="activities" changeTab={this.changeTab}/>
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">
@@ -41,8 +36,6 @@ class Activities extends Component {
             <Adder type='activity'/>
           </div>
         </div>
-
-        <Footer/>
       </div>
     );
   };

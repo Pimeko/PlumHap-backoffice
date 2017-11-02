@@ -55,3 +55,7 @@ export const post_obj = (name, obj) =>  {
     obj,
     () => {});
 }
+
+export const clear = (name) => ({
+  type: "CLEAR_" + name.toUpperCase()
+})

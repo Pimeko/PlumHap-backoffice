@@ -10,7 +10,7 @@ import Activities from './containers/Activities'
 import Activity from './containers/Activity'
 import ActivityCreator from './containers/ActivityCreator'
 
-import AdminPanel from './containers/AdminPanel'
+import Admin from './containers/Admin'
 
 export default
 <Route>
@@ -21,5 +21,5 @@ export default
     <Route path="/activities" component={Activities} />
     <Route path="/activities/:id" component={Activity} />
     <Route path="/activity-creator" component={ActivityCreator} />
-    <Route path="/admin" component={AdminPanel} />
+    <Route path="/admin" component={Admin} />
 </Route>

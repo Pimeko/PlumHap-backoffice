@@ -8,6 +8,7 @@ export const login = (user) =>  {
   };
   var success_function = (data) => {
     localStorage.setItem('jwt', data.token);
+    localStorage.setItem('id', data.id);
   }
   return action_generator.call_request(
     'login',

@@ -33,8 +33,9 @@ export default class Incrementor extends Component {
       <div className="field">
         <div className="control">
           <label className="label">{this.props.name}</label>
-          <input className={"input " + isDanger } type="text" placeholder={this.props.name}
+          <input className={"input " + isDanger } placeholder={this.props.name}
             value={this.state.val} onChange={this.onChange}
+             type={this.props.password ? "password" : "text"}
             autoFocus={this.props.autoFocus}/>
         </div>
         <p className={"help" + isDanger}>{this.props.error}</p>

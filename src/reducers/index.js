@@ -9,7 +9,8 @@ const rootReducer = combineReducers({
   routing,
   auth,
   statements : create_fetcher('statement'),
-  activities : create_fetcher('activitie')
+  activities : create_fetcher('activitie'),
+  user       : create_fetcher('user')
 })
 
 export default rootReducer

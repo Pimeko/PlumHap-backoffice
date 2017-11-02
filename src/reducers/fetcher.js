@@ -109,6 +109,16 @@ export default function create_fetcher(name) {
           ...state,
           error: action.error
         };
+      case "CLEAR_" + name:
+        return {
+          ...state,
+          hasFetched: false,
+          hasUpdated: false,
+          hasDeleted: false,
+          hasPosted: false,
+          obj: {},
+          list: []
+        };
       default:
         return state;
     }

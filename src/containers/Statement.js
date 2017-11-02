@@ -16,7 +16,8 @@ class Statement extends Component {
 
     this.state = {
       name: 'statement',
-      field: null
+      field: null,
+      hasFormError: false
     }
   }
 
@@ -46,8 +47,11 @@ class Statement extends Component {
     }));
   }
 
-  onFieldChange = (field) => {
-    this.setState({field: field});
+  onFieldChange = (newField) => {
+    this.setState({
+      field: newField.field,
+      hasFormError: newField.error
+    });
   }
 
   render() {
@@ -63,7 +67,7 @@ class Statement extends Component {
             hasFetched={ this.props.hasFetched } obj={ this.props.obj }/>
 
             <button className="button is-info is-large has-addons is-centered"
-              onClick={this.update}>
+              onClick={this.update} disabled={this.state.hasFormError}>
               Update
             </button>
 

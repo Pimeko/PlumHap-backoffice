@@ -16,7 +16,8 @@ class StatementCreator extends Component {
 
     this.state = {
       name: 'statement',
-      field: null
+      field: null,
+      hasFormError: true
     }
   }
 
@@ -30,8 +31,11 @@ class StatementCreator extends Component {
     }
   }
 
-  onFieldChange = (field) => {
-    this.setState({field: field});
+  onFieldChange = (newField) => {
+    this.setState({
+      field: newField.field,
+      hasFormError: newField.error
+    });
   }
 
   create = () => {
@@ -51,7 +55,7 @@ class StatementCreator extends Component {
             <StatementField onChange={this.onFieldChange}/>
 
             <button className="button is-info is-large has-addons is-centered"
-              onClick={() => this.create()}>
+              onClick={() => this.create()} disabled={this.state.hasFormError}>
               Create
             </button>
           </div>

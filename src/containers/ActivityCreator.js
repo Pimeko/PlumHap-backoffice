@@ -17,7 +17,8 @@ class ActivityCreator extends Component {
 
     this.state = {
       name: 'statement',
-      field: null
+      field: null,
+      hasFormError: true
     }
   }
 
@@ -32,12 +33,18 @@ class ActivityCreator extends Component {
   }
 
   create = () => {
-    this.props.dispatch(fetcher.post_obj('activitie', {
-      data: this.state.field}));
+    var toSend = {
+      ...this.state.field
+    };
+
+    this.props.dispatch(fetcher.post_obj('activitie', toSend));
   }
 
-  onFieldChange = (field) => {
-    this.setState({field: field});
+  onFieldChange = (newField) => {
+    this.setState({
+      field: newField.field,
+      hasFormError: newField.error
+    });
   }
 
   render() {
@@ -52,7 +59,7 @@ class ActivityCreator extends Component {
             <ActivityField onChange={this.onFieldChange}/>
 
             <button className="button is-info is-large has-addons is-centered"
-              onClick={() => this.create()}>
+              onClick={() => this.create()} disabled={this.state.hasFormError}>
               Create
             </button>
           </div>

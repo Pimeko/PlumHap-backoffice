@@ -12,15 +12,26 @@ export default class ActivityField extends Component {
 
     this.state = {
       title: '',
+      errorTitle: '',
       description: '',
-      level: "one",
-      nb_times: 0,
+      level: "1",
+      nb_times: 1,
       default: false
     }
   }
 
   onTitleChange = (val) => {
-    this.setState({title: val}, this.onChange)
+    let error = this.state.errorTitle;
+    if (val.length < 3) {
+      error = "The title must be at least 3 characters.";
+    }
+    else {
+      error = '';
+    }
+    this.setState({
+      title: val,
+      errorTitle: error
+    }, this.onChange);
   }
 
   onDescriptionChange = (val) => {
@@ -32,15 +43,31 @@ export default class ActivityField extends Component {
   }
 
   onTimesChange = (val) => {
-    this.setState({nbTimes: val}, this.onChange);
+    this.setState({nb_times: val}, this.onChange);
   }
 
   onLevelChange = (val) => {
-    this.setState({level: val.value}, this.onChange);
+    this.setState({level: val}, this.onChange);
+  }
+
+  hasError = () => {
+    var s = this.state;
+    return s.errorTitle !== '';
   }
 
   onChange = () => {
-    this.props.onChange(this.state);
+    var s = this.state;
+    var hasError = this.hasError();
+    this.props.onChange({
+      field: {
+        title: s.title,
+        description: s.description,
+        level: s.level,
+        nb_times: s.nb_times,
+        default: s.default
+      },
+      error: hasError
+    });
   }
 
   render() {
@@ -48,11 +75,11 @@ export default class ActivityField extends Component {
       <div>
         <InputField name="Title" onChange={this.onTitleChange} autoFocus
         hasFetched={ this.props.hasFetched } obj={ this.props.obj }
-        objName="title"/>
+        objName="title" error={ this.state.errorTitle }/>
 
-        <TextArea name="Description" onChange={this.onDescriptionChange}
+        <TextArea name="Description (optional)" onChange={this.onDescriptionChange}
         hasFetched={ this.props.hasFetched } obj={ this.props.obj }
-        objName="description"/>
+        objName="description" placeholder="Enter description here..."/>
 
         <DropDown name="Level" onChange={this.onLevelChange}
         options={[

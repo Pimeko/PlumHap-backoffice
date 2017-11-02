@@ -48,14 +48,10 @@ export const post_obj = (name, obj) =>  {
   var action_name = "post_" + name;
   action_generator.generate(action_name);
 
-  var body = {
-    data: obj.data
-  };
-
   return action_generator.call_request(
     action_name,
     name + 's/',
     'POST',
-    body,
+    obj,
     () => {});
 }

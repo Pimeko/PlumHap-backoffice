@@ -6,7 +6,7 @@ export default class DropDown extends Component {
     super(props);
 
     this.state = {
-      val: ''
+      val: props.options[0].value
     };
   }
 
@@ -38,6 +38,7 @@ export default class DropDown extends Component {
             options={this.props.options}
             onChange={this.onChange}
             clearable={false}
+            searchable={false}
           />
         </div>
       </div>

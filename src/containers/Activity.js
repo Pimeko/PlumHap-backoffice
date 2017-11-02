@@ -17,7 +17,8 @@ class Activity extends Component {
 
     this.state = {
       name: 'activitie',
-      field: null
+      field: null,
+      hasFormError: true
     }
   }
 
@@ -27,7 +28,7 @@ class Activity extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hasPosted) {
+    if (nextProps.hasUpdated || nextProps.hasDeleted) {
       browserHistory.push('/activities');
     }
   }
@@ -38,8 +39,6 @@ class Activity extends Component {
       ...this.state.field
     };
 
-    console.log(toSend);
-
     this.props.dispatch(fetcher.update_obj(this.state.name, toSend));
   }
 
@@ -49,8 +48,11 @@ class Activity extends Component {
     }));
   }
 
-  onFieldChange = (field) => {
-    this.setState({field: field});
+  onFieldChange = (newField) => {
+    this.setState({
+      field: newField.field,
+      hasFormError: newField.error
+    });
   }
 
   render() {
@@ -66,7 +68,7 @@ class Activity extends Component {
             hasFetched={ this.props.hasFetched } obj={ this.props.obj } />
 
             <button className="button is-info is-large has-addons is-centered"
-              onClick={this.update}>
+              onClick={this.update} disabled={this.state.hasFormError}>
               Update
             </button>
 

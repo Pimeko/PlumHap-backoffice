@@ -32,7 +32,8 @@ export default class TextArea extends Component {
       <div className="field">
         <div className="control">
           <label className="label">{this.props.name}</label>
-          <textarea className="textarea" placeholder={this.props.name}
+          <textarea className="textarea"
+          placeholder={this.props.placeholder ? this.props.placeholder : this.props.name}
           value = {this.state.val}
           onChange={this.onChange} autoFocus={this.props.autoFocus}>
           </textarea>

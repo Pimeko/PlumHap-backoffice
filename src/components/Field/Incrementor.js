@@ -5,7 +5,7 @@ export default class Incrementor extends Component {
     super(props);
 
     this.state = {
-      val: 0
+      val: 1
     };
   }
 

@@ -7,21 +7,39 @@ export default class StatementField extends Component {
     super(props);
 
     this.state = {
-      message: ''
+      message: '',
+      errorMessage: ''
     }
   }
 
   onChange = (val) => {
-    this.setState({message: val}, () => {
-    this.props.onChange(this.state);
+    let errorMessage = this.state.errorMessage;
+    if (val.length < 3) {
+      errorMessage = "The message must be at least 3 characters.";
+    }
+    else {
+      errorMessage = '';
+    }
+    this.setState({
+      message: val,
+      errorMessage: errorMessage
+    }, () => {
+      this.props.onChange({
+        field: {
+          message: this.state.message
+        },
+        error: errorMessage !== ''
+      });
     });
   }
 
   render() {
     return (
-      <InputField name="Message" onChange={this.onChange} autoFocus
-      hasFetched={ this.props.hasFetched } obj={ this.props.obj }
-      objName="message"/>
+      <div>
+        <InputField name="Message" onChange={this.onChange} autoFocus
+        hasFetched={ this.props.hasFetched } obj={ this.props.obj }
+        objName="message" error={ this.state.errorMessage }/>
+      </div>
     );
   };
 }

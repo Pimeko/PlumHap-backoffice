@@ -28,14 +28,16 @@ export default class Incrementor extends Component {
   }
 
   render() {
+    var isDanger = this.props.error !== '' ? "is-danger" : "";
     return (
       <div className="field">
         <div className="control">
           <label className="label">{this.props.name}</label>
-          <input className="input" type="text" placeholder={this.props.name}
+          <input className={"input " + isDanger } type="text" placeholder={this.props.name}
             value={this.state.val} onChange={this.onChange}
             autoFocus={this.props.autoFocus}/>
         </div>
+        <p className={"help" + isDanger}>{this.props.error}</p>
       </div>
     );
   };

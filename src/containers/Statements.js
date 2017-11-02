@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
-import * as auth_utils from '../utils/auth'
 
 // Components
 import Header from '../components/Common/Header'
@@ -20,8 +19,11 @@ class Statements extends Component {
   }
 
   componentWillMount() {
-    auth_utils.check_auth();
     this.props.dispatch(fetcher.get_all(this.state.name));
+  }
+
+  changeTab = () => {
+    this.props.dispatch(fetcher.clear_error(this.state.name));
   }
 
   render() {
@@ -29,7 +31,7 @@ class Statements extends Component {
       <div>
         <Header/>
 
-        <Menu active="statements"/>
+        <Menu active="statements" changeTab={this.changeTab}/>
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">

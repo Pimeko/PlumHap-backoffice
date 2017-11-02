@@ -59,3 +59,7 @@ export const post_obj = (name, obj) =>  {
 export const clear = (name) => ({
   type: "CLEAR_" + name.toUpperCase()
 })
+
+export const clear_error = (name) => ({
+  type: "CLEAR_ERROR_" + name.toUpperCase()
+})

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
 import { browserHistory } from 'react-router'
-import * as auth_utils from '../utils/auth'
 import 'react-select/dist/react-select.css';
 
 // Components
@@ -20,10 +19,6 @@ class ActivityCreator extends Component {
       field: null,
       hasFormError: true
     }
-  }
-
-  componentWillMount() {
-    auth_utils.check_auth();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -47,12 +42,16 @@ class ActivityCreator extends Component {
     });
   }
 
+  changeTab = () => {
+    this.props.dispatch(fetcher.clear_error(this.state.name));
+  }
+
   render() {
     return (
       <div>
         <Header/>
 
-        <Menu active="activities"/>
+        <Menu active="activities" changeTab={this.changeTab}/>
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">

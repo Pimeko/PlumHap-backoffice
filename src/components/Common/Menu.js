@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router'
 
 export default class Menu extends Component {
   changeTab(name) {
+    this.props.changeTab();
     browserHistory.push('/' + name);
   }
 

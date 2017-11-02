@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
-import * as auth_utils from '../utils/auth'
 import { browserHistory } from 'react-router'
 
 // Components
@@ -29,10 +28,6 @@ class Admin extends Component {
     }
   }
 
-  componentWillMount() {
-    auth_utils.check_auth();
-  }
-
   update = () => {
     var toSend = {
       id: localStorage.getItem('id'),
@@ -49,12 +44,16 @@ class Admin extends Component {
     });
   }
 
+  changeTab = () => {
+    this.props.dispatch(fetcher.clear_error(this.state.name));
+  }
+
   render() {
     return (
       <div>
         <Header/>
 
-        <Menu active="admin"/>
+        <Menu active="admin" changeTab={this.changeTab}/>
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">

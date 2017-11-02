@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
 import { browserHistory } from 'react-router'
-import * as auth_utils from '../utils/auth'
 
 // Components
 import Header from '../components/Common/Header'
@@ -19,10 +18,6 @@ class StatementCreator extends Component {
       field: null,
       hasFormError: true
     }
-  }
-
-  componentWillMount() {
-    auth_utils.check_auth();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,12 +38,16 @@ class StatementCreator extends Component {
       data: this.state.field}));
   }
 
+  changeTab = () => {
+    this.props.dispatch(fetcher.clear_error(this.state.name));
+  }
+
   render() {
     return (
       <div>
         <Header/>
 
-        <Menu active="statements"/>
+        <Menu active="statements" changeTab={this.changeTab}/>
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">

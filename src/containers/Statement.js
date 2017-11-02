@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as fetcher from '../actions/fetcher'
-import * as auth_utils from '../utils/auth'
 import { browserHistory } from 'react-router'
 
 // Components
@@ -28,7 +27,6 @@ class Statement extends Component {
   }
 
   componentWillMount() {
-    auth_utils.check_auth();
     this.props.dispatch(fetcher.get_one(this.state.name, this.props.params.id));
   }
 
@@ -54,12 +52,16 @@ class Statement extends Component {
     });
   }
 
+  changeTab = () => {
+    this.props.dispatch(fetcher.clear_error(this.state.name));
+  }
+
   render() {
     return (
       <div>
         <Header/>
 
-        <Menu active="statements"/>
+        <Menu active="statements" changeTab={this.changeTab}/>
 
         <div className="hero-body column is-4 is-offset-4 has-text-centered">
           <div className="box">

@@ -119,6 +119,11 @@ export default function create_fetcher(name) {
           obj: {},
           list: []
         };
+      case "CLEAR_ERROR_" + name:
+        return {
+          ...state,
+          error: ''
+        };
       default:
         return state;
     }

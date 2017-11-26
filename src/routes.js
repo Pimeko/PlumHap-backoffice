@@ -20,14 +20,14 @@ export default
 <Route>
     <Route path="/" component={Connect} />
     <Route component={RequiredAuth(Main)}>
-        <Route path="/statements"         component={{main: Statements}} />
-        <Route path="/statements/:id"     component={{main: Statement}} />
-        <Route path="/statement-creator"  component={{main: StatementCreator}} />
+        <Route path="/statements"         components={{main: Statements}} />
+        <Route path="/statements/:id"     components={{main: Statement}} />
+        <Route path="/statement-creator"  components={{main: StatementCreator}} />
 
-        <Route path="/activities"         component={{main: Activities}} />
-        <Route path="/activities/:id"     component={{main: Activity}} />
-        <Route path="/activity-creator"   component={{main: ActivityCreator}} />
+        <Route path="/activities"         components={{main: Activities}} />
+        <Route path="/activities/:id"     components={{main: Activity}} />
+        <Route path="/activity-creator"   components={{main: ActivityCreator}} />
 
-        <Route path="/admin"              component={{main: Admin}} />
+        <Route path="/admin"              components={{main: Admin}} />
     </Route>
 </Route>

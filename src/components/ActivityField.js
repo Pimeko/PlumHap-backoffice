@@ -14,7 +14,7 @@ export default class ActivityField extends Component {
       title: '',
       errorTitle: '',
       description: '',
-      level: "1",
+      level: 1,
       nb_times: 1,
       default: false
     }
@@ -83,9 +83,9 @@ export default class ActivityField extends Component {
 
         <DropDown name="Level" onChange={this.onLevelChange}
         options={[
-                  { value: '1', label: '1' },
-                  { value: '2', label: '2' },
-                  { value: '3', label: '3' }
+                  { value: 1, label: '1' },
+                  { value: 2, label: '2' },
+                  { value: 3, label: '3' }
                 ]}
         hasFetched={ this.props.hasFetched } obj={ this.props.obj }
         objName="level"/>
